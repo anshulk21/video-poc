@@ -35,7 +35,7 @@ function App() {
         };
       }
     }
-  }, [currentIndex]);
+  }, [currentIndex ]);
 
   const handlers = useSwipeable({
     onSwipedUp: () => changeVideo('next'),
@@ -98,14 +98,16 @@ function App() {
             pointerEvents: 'auto'
           }}
           {...handlers}
+          onClick={togglePlayPause}
         />
-        <Box style={styles.videoWrapper} onClick={togglePlayPause}>
+        <Box style={styles.videoWrapper}>
           <div data-vjs-player style={styles.videoWrapper}>
             <video ref={videoRef} className="video-js vjs-default-skin" controls />
           </div>
         </Box>
       </Box>
     );
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentIndex]);
 
   return (
